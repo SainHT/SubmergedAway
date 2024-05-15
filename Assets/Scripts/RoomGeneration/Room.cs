@@ -34,16 +34,16 @@ public class Room : MonoBehaviour
         GameObject parent = new GameObject("TilesParent");
         parent.transform.SetParent(transform);
 
-        for (int x = 0; x < roomHeight; x++) { 
+        int priority = 0;
+        for (int x = 0; x < roomHeight; x++) {
             for (int y = 0; y < roomWidth; y++) {
                 tiles = floorTiles;
                 float fixWalls = 0;
-                int priority = 1;
+                priority += 1;
 
                 if (x == 0 && y == 0){
                     tiles = topWallTiles;
                     fixWalls = .27f;
-                    priority = 0;
                 }
                 else if (x == 0) {
                     tiles = leftWallTiles;
@@ -52,7 +52,6 @@ public class Room : MonoBehaviour
                 else if (y == 0){
                     tiles = rightWallTiles;
                     fixWalls = .27f;
-                    priority = 0;
                 }
 
                 //int randomIndex = Random.Range(0, tiles.Length);
@@ -73,6 +72,7 @@ public class Room : MonoBehaviour
                     collider.transform.SetParent(tile.transform);
                 }
             }
+            priority = x + 1;
         }
     }
 }
