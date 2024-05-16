@@ -72,7 +72,7 @@ public class Room : MonoBehaviour
                     collider.transform.SetParent(tile.transform);
                 }
             }
-            priority = x + 1;
+            //priority = x + 1;
         }
     }
 }
