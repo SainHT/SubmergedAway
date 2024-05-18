@@ -9,8 +9,10 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject[] rightWallTiles;
     [SerializeField] private GameObject[] topWallTiles;
     [SerializeField] private GameObject[] floorColiders;
+    [SerializeField] private GameObject enemySpawner;
     [SerializeField] private int maxRooms;
     private GameObject[] tiles;
+    int initPriority = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,7 @@ public class Room : MonoBehaviour
     }
 
     private void GenerateDungeon(){
-        int initPriority = (maxRooms * 2) * 30;
+        initPriority = (maxRooms * 2) * 30;
 
         int randRoomWidth = Random.Range(10, 16);
         int randRoomHeight = Random.Range(10, 16);
@@ -28,7 +30,6 @@ public class Room : MonoBehaviour
         if(goRight) conect = 2;
         else conect = 1;
         GenerateRoom(0, 0, randRoomWidth, randRoomHeight, conect, initPriority);
-        print(goRight);
 
         int corridorLength = 7;
         if (goRight){
@@ -93,7 +94,7 @@ public class Room : MonoBehaviour
     }
 
     private void GenerateRoom(float xPos, float yPos, int roomWidth, int roomHeight, int connector, int prioring, int connectorFrom = 0){ //connector 0 = None | 1 = Right | 2 = Left ; connectorFrom 0 = None | 1 = Right | 2 = Left
-        print($"Generating room with width: {roomWidth} and height: {roomHeight}");
+        //print($"Generating room with width: {roomWidth} and height: {roomHeight}");
 
         GameObject parent = new GameObject("TilesParent");
         parent.transform.SetParent(transform);
@@ -135,6 +136,12 @@ public class Room : MonoBehaviour
                 GameObject tile = Instantiate(tiles[randomIndex], new Vector3(xPos + .3f * (x - y), yPos - 0.15f * (x + y) + fixWalls, 0), Quaternion.identity);
                 tile.GetComponent<SpriteRenderer>().sortingOrder = priority;
                 tile.transform.SetParent(parent.transform);
+
+                //add enemy spawnpoint to the room
+                if (x == (int)(roomHeight) / 2 && y == (int)(roomWidth / 2) && roomHeight != 3 && roomWidth != 3 && connector != 0 && connectorFrom != 0){
+                    GameObject enemy = Instantiate(enemySpawner, new Vector3(xPos + .3f * (x - y), yPos - 0.15f * (x + y), 0), Quaternion.identity);
+                    enemy.transform.SetParent(parent.transform);
+                }
 
                 if (x == roomHeight - 1 && ((roomWidth != 3) && !(connectorFrom == 1 && y > -1 && y < 3))){
                     GameObject collider = Instantiate(floorColiders[0], new Vector3(xPos + .3f * (x - y) + .227f, yPos - 0.15f * (x + y) - .491f, .089f), Quaternion.identity);
