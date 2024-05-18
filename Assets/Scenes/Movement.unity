@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorTiles:
   - {fileID: 849721325020707611, guid: b7945872c5e21cd41831fd4f9b105f5b, type: 3}
+  - {fileID: 3183812787884253379, guid: 5e33b02fb8f6196469599fd97ba3fed4, type: 3}
   leftWallTiles:
   - {fileID: 1001002264403181995, guid: 161661c3e699f3142b2230fbb2196dcc, type: 3}
   - {fileID: 6388060756052003188, guid: 0f828e1320fb4a4499e81fbd8e7b3769, type: 3}
@@ -186,6 +187,7 @@ MonoBehaviour:
   floorColiders:
   - {fileID: 5318013533652077106, guid: bc27ad4aa32fe8e4c80a98d6e839cb6e, type: 3}
   - {fileID: 745724140868366705, guid: 7624f6eda30e8044d91ce67c9331e6c6, type: 3}
+  maxRooms: 1
 --- !u!1 &138676231
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +301,7 @@ Transform:
   m_GameObject: {fileID: 154434553}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.2143, y: 3.4893, z: 0}
+  m_LocalPosition: {x: 0, y: -0.11, z: 0}
   m_LocalScale: {x: 1.5172527, y: 1.5172527, z: 1.5172527}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -848,7 +850,7 @@ Transform:
   m_GameObject: {fileID: 1353225061}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.087580316}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
