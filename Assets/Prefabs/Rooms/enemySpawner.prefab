@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6527170851276445454}
   - component: {fileID: 868245142476696800}
-  - component: {fileID: 4565757557169316223}
+  - component: {fileID: 5554077953548650069}
   m_Layer: 0
   m_Name: enemySpawner
   m_TagString: Untagged
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 3367144399421827203, guid: 241e2f6f4794aae4bb1fbab133ca6deb, type: 3}
---- !u!58 &4565757557169316223
-CircleCollider2D:
+--- !u!61 &5554077953548650069
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -80,5 +80,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 4
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0

@@ -139,7 +139,8 @@ public class Room : MonoBehaviour
 
                 //add enemy spawnpoint to the room
                 if (x == (int)(roomHeight) / 2 && y == (int)(roomWidth / 2) && roomHeight != 3 && roomWidth != 3 && connector != 0 && connectorFrom != 0){
-                    GameObject enemy = Instantiate(enemySpawner, new Vector3(xPos + .3f * (x - y), yPos - 0.15f * (x + y), 0), Quaternion.identity);
+                    GameObject enemy = Instantiate(enemySpawner, new Vector3(xPos + .3f * (x - y), yPos - 0.15f * (x + y), 0), Quaternion.Euler(60f, 0f, 45f));
+                    enemy.GetComponent<BoxCollider2D>().size = new Vector2(roomWidth * .3f , roomHeight * .3f);
                     enemy.transform.SetParent(parent.transform);
                 }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
     [SerializeField] private GameObject[] enemyPrefabs;
     private int maxEnemies;
+    bool waveSpawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,12 @@ public class EnemySpawner : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (GetComponent<Collider2D>().isTrigger && GetComponent<Collider2D>().bounds.Contains(GameObject.FindGameObjectWithTag("Player").transform.position) && transform.childCount < maxEnemies)
+        if (transform.childCount == maxEnemies - 1)
+        {
+            waveSpawned = true;
+        }
+
+        if (GetComponent<Collider2D>().isTrigger && GetComponent<Collider2D>().bounds.Contains(GameObject.FindGameObjectWithTag("Player").transform.position) && !waveSpawned)
         {
             print("Player is in the room");
             SpawnEnemy();
@@ -24,8 +30,9 @@ public class EnemySpawner : MonoBehaviour {
 
     void SpawnEnemy() {
         int randomIndex = Random.Range(0, enemyPrefabs.Length);
-        float randomX = Random.Range(transform.position.x - 1.5f, transform.position.x + 1.5f);
-        float randomY = Random.Range(transform.position.y - 1.5f, transform.position.y + 1.5f);
+        Collider2D roomCollider = GetComponent<Collider2D>();
+        float randomX = Random.Range(roomCollider.bounds.min.x, roomCollider.bounds.max.x);
+        float randomY = Random.Range(roomCollider.bounds.min.y, roomCollider.bounds.max.y);
         Vector3 randomPosition = new Vector3(randomX, randomY, transform.position.z);
         GameObject enemy = Instantiate(enemyPrefabs[randomIndex], randomPosition, Quaternion.identity);
         enemy.transform.SetParent(transform);
