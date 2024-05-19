@@ -5,21 +5,23 @@ using UnityEngine;
 public class WallColiders : MonoBehaviour
 {
     private BoxCollider2D currBoxCollider;
+    Transform player;
+    SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
     void Start()
     {
         currBoxCollider = GetComponentInChildren<BoxCollider2D>();
+        player = GameObject.Find("Player").transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Transform player = GameObject.Find("Player").transform;
-        if (player.position.y > transform.position.y){
+        if (player.position.y > transform.position.y)
+        {
             currBoxCollider.enabled = false;
         }
-        else{
+        else
+        {
             currBoxCollider.enabled = true;
         }
     }
