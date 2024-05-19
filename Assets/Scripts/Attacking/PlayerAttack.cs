@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
 
     private bool attacking = false;
 
-    private float timeToAttack = 0.25f;
+    private float timeToAttack;
     private float timer = 0f;
 
     void Start()
@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Attack();
         }
@@ -38,6 +38,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
+        Inventory inventory = transform.gameObject.GetComponent<Inventory>();
+        timeToAttack = inventory.guns[inventory.currentGunIndex].timeToAttack;
+
         attacking = true;
         attackArea.SetActive(attacking);
     }

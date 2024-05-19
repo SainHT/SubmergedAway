@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-    private int damage = 3;
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.GetComponent<Health>() != null)
         {
             Health health = collider.GetComponent<Health>();
+            Inventory inventory = transform.parent.gameObject.GetComponent<Inventory>();
+
+            int damage = inventory.guns[inventory.currentGunIndex].damage;
+
             health.Damage(damage);
         }
     }
