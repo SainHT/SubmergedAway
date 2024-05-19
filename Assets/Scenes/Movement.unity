@@ -1027,6 +1027,7 @@ GameObject:
   - component: {fileID: 1941513069}
   - component: {fileID: 1941513075}
   - component: {fileID: 1941513074}
+  - component: {fileID: 1941513076}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1202,6 +1203,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &1941513076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941513068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf776284ca95ab445b89f8c96095f020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxConsumables: 5
+  maxGuns: 2
+  consumables: []
+  guns:
+  - {fileID: 3705163654470747088, guid: 1ab9c86ba53c5b241bd48e1a0a3527ec, type: 3}
+  - {fileID: 2392935559433529921, guid: 4126ba2c312731549a2c8939a913c927, type: 3}
+  currentGunIndex: 0
 --- !u!1001 &7408947567176118344
 PrefabInstance:
   m_ObjectHideFlags: 0
