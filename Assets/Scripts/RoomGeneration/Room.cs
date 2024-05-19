@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject[] topWallTiles;
     [SerializeField] private GameObject[] floorColiders;
     [SerializeField] private GameObject enemySpawner;
+
     [SerializeField] private int maxRooms;
     private GameObject[] tiles;
     int initPriority = 0;
@@ -144,16 +145,22 @@ public class Room : MonoBehaviour
                     enemy.transform.SetParent(parent.transform);
                 }
 
-                if (x == roomHeight - 1 && ((roomWidth != 3) && !(connectorFrom == 1 && y > -1 && y < 3))){
+                //adding side floor colliders
+                if (x == roomHeight - 1 && roomWidth != 3 && !(connectorFrom == 1 && y > -1 && y < 3) && !(connectorFrom == 0 && connector == 0 && y == roomWidth - 1)){
                     GameObject collider = Instantiate(floorColiders[0], new Vector3(xPos + .3f * (x - y) + .227f, yPos - 0.15f * (x + y) - .491f, .089f), Quaternion.identity);
                     collider.transform.Rotate(-8.949f, -57.388f, 15.948f);
                     collider.transform.SetParent(tile.transform);
                 }
                 
-                if (y == roomWidth - 1 && (roomHeight != 3) && !(connectorFrom == 2 && x > -1 && x < 3)){
+                if (y == roomWidth - 1 && roomHeight != 3 && !(connectorFrom == 2 && x > -1 && x < 3) && !(connectorFrom == 0 && connector == 0 && x == roomHeight - 1)){
                     GameObject collider = Instantiate(floorColiders[1], new Vector3(xPos + .3f * (x - y) - .225f, yPos - 0.15f * (x + y) - .473f, .287f), Quaternion.identity);
                     collider.transform.Rotate(13.502f, -126.343f, 17.556f);
                     collider.transform.SetParent(tile.transform);
+                }
+
+                //add script to certain wall tiles
+                if ((connector == 1 &&  x > 7 && x < 10 && y == 0) || (connector == 2 && y > 6 && y < 9 && x == 0)){
+                    tile.AddComponent<WallColiders>();
                 }
             }
             priority = x + 1 + prioring;
