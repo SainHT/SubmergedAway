@@ -8,13 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 direction;
     [SerializeField] private float moveSpeed = 5f;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float dirX = Input.GetAxisRaw("Horizontal");
@@ -24,5 +22,12 @@ public class PlayerMovement : MonoBehaviour
         direction.Normalize();
 
         rb.velocity = direction * moveSpeed;
+
+        if (dirX == -1f) {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (dirX == 1f) {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }
