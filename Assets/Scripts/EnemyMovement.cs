@@ -9,18 +9,20 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 playerPos;
     private Vector2 oldPlayerPos;
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private float attackRange = 2f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player");
+
     }
 
     void FixedUpdate()
     {
         playerPos = player.transform.position;
 
-        if (oldPlayerPos != playerPos && Vector2.Distance(transform.position, playerPos) > 0.5)
+        if (oldPlayerPos != playerPos && Vector2.Distance(transform.position, playerPos) > attackRange)
         {
             Vector2 currentPos = transform.position;
 

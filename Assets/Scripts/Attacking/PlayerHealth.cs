@@ -66,5 +66,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+        // Go to defeat scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Defeat");
     }
 }

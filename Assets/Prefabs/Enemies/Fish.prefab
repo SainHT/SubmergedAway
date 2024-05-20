@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 748185096054977257}
   - component: {fileID: 1764166778082079092}
   - component: {fileID: 3045730040382106133}
+  - component: {fileID: 7018403115954100366}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -267,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  healOnDeath: 1
   healthBar: {fileID: 1714656815617994844}
 --- !u!114 &3045730040382106133
 MonoBehaviour:
@@ -281,6 +283,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  attackRange: 0.5
+--- !u!114 &7018403115954100366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367144399421827203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47732548c59bb314493f84f17ccb669a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 0.1
+  attackDamage: 1
+  attackRange: 0.5
 --- !u!1001 &2418852015639995388
 PrefabInstance:
   m_ObjectHideFlags: 0
