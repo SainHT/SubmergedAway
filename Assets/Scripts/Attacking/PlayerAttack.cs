@@ -6,6 +6,8 @@ public class PlayerAttack : MonoBehaviour
 {
     private GameObject attackArea = default;
 
+    [SerializeField] private Animator animator;
+
     private bool attacking = false;
 
     private float timeToAttack;
@@ -31,6 +33,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 timer = 0;
                 attacking = false;
+                animator.SetFloat("Attacking", 0);
                 attackArea.SetActive(attacking);
             }
         }
@@ -38,6 +41,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
+        animator.SetFloat("Attacking", 1);
+
         Inventory inventory = transform.gameObject.GetComponent<Inventory>();
         timeToAttack = inventory.guns[inventory.currentGunIndex].timeToAttack;
 
