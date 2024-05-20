@@ -17,7 +17,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Movement");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 
     public void QuitGame()
@@ -38,7 +38,7 @@ public class MainMenuManager : MonoBehaviour
         credits.SetActive(false);
         controls.SetActive(false);
     }
-    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && (credits.activeSelf || controls.activeSelf))

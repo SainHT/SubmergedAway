@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class DefeatManager : MonoBehaviour
 {
-    public void MainMenu(){
+    public void MainMenu()
+    {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
-    public void RestartGame(){
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Movement");
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
     }
 }

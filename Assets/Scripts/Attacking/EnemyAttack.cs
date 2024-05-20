@@ -9,8 +9,8 @@ public class EnemyAttack : MonoBehaviour
     public float attackRange = 2f; // Distance at which the enemy can attack
 
     private GameObject player; // Reference to the player object
-    private bool atacked = false;
-    private float timeToAttack;
+    private bool attacked = false;
+    private float timeToAttack = 5f;
     private float timer = 0f;
 
 
@@ -25,18 +25,18 @@ public class EnemyAttack : MonoBehaviour
         float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         // Check if the player is within attack range
-        if (distanceToPlayer <= attackRange)
+        if (distanceToPlayer <= attackRange && !attacked)
         {
-            // Attack the player
             AttackPlayer();
         }
-        if(atacked)
+
+        if (attacked)
         {
             timer += Time.deltaTime;
-            if(timer >= timeToAttack)
+            if (timer >= timeToAttack)
             {
                 timer = 0;
-                atacked = false;
+                attacked = false;
             }
         }
 
@@ -47,6 +47,6 @@ public class EnemyAttack : MonoBehaviour
         // Reduce the player's health by the attack damage
         player.GetComponent<PlayerHealth>().Damage(attackDamage);
 
-        atacked = true;
+        attacked = true;
     }
 }

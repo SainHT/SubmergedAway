@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Sprite[] healthBarStatus;
     [SerializeField] private Animator animator;
 
-    private void Start() 
+    private void Start()
     {
         health = maxHealth;
         playerHealthBar.sprite = healthBarStatus[health];
@@ -18,11 +18,11 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(OxygenLoss());
     }
 
-    IEnumerator OxygenLoss() 
+    IEnumerator OxygenLoss()
     {
-        while (true) 
+        while (true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(5f);
             Damage(1);
         }
     }
@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
         health -= amount;
 
-        if (health >= 0) 
+        if (health >= 0)
         {
             playerHealthBar.sprite = healthBarStatus[health];
         }
@@ -44,19 +44,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(int amount) 
+    public void Heal(int amount)
     {
-        if (health + amount <= maxHealth) 
+        if (health + amount <= maxHealth)
         {
             health += amount;
         }
-        else 
+        else
         {
             health = maxHealth;
         }
     }
 
-    private IEnumerator Hurt() 
+    private IEnumerator Hurt()
     {
         animator.SetFloat("Hurt", 1);
         yield return new WaitForSeconds(0.3f);
@@ -66,7 +66,6 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
-        // Go to defeat scene
         UnityEngine.SceneManagement.SceneManager.LoadScene("Defeat");
     }
 }
