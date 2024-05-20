@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7017861338559359483}
   - component: {fileID: 2548617855128832026}
   - component: {fileID: 6748170671505055177}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 2276477494954634726}
 --- !u!1 &3367144399421827203
 GameObject:
   m_ObjectHideFlags: 0
