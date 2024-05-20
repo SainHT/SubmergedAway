@@ -7,8 +7,10 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int healOnDeath = 1;
     [SerializeField] private Slider healthBar;
     private FloatingStatusBar floatingHealthBar;
+    private PlayerHealth playerHealth;
 
     private void Awake()
     {
@@ -17,6 +19,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+
         health = maxHealth;
         floatingHealthBar.UpdateHealthBar(health, maxHealth);
     }
@@ -34,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
+        playerHealth.Heal(healOnDeath);
         Destroy(gameObject);
     }
 }

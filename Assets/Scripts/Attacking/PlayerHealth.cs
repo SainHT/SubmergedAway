@@ -44,6 +44,18 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void Heal(int amount) 
+    {
+        if (health + amount <= maxHealth) 
+        {
+            health += amount;
+        }
+        else 
+        {
+            health = maxHealth;
+        }
+    }
+
     private IEnumerator Hurt() 
     {
         animator.SetFloat("Hurt", 1);

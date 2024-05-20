@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: ff2f4c9092306d84ab1807dfea98898c
+  - enabled: 1
+    path: Assets/Scenes/Attacking.unity
+    guid: 065bb2079b6917745b1300293d1703b6
+  - enabled: 1
+    path: Assets/Scenes/Movement.unity
+    guid: 4481a2fe4b3bafa4b9dda68a29737782
   m_configObjects: {}

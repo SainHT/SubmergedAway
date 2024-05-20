@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private GameObject player;
     private Vector2 playerPos;
     private Vector2 oldPlayerPos;
     [SerializeField] private float moveSpeed = 2f;
@@ -12,11 +13,12 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GameObject.Find("Player");
     }
 
     void FixedUpdate()
     {
-        playerPos = GameObject.Find("Player").transform.position;
+        playerPos = player.transform.position;
 
         if (oldPlayerPos != playerPos && Vector2.Distance(transform.position, playerPos) > 0.5)
         {

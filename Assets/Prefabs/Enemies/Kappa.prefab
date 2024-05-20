@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   maxHealth: 100
+  healOnDeath: 1
   healthBar: {fileID: 2276477494954634726}
 --- !u!1 &3367144399421827203
 GameObject:
@@ -283,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  healOnDeath: 2
   healthBar: {fileID: 2276477494954634726}
 --- !u!114 &7954329975800338688
 MonoBehaviour:
