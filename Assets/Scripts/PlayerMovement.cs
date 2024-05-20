@@ -22,14 +22,5 @@ public class PlayerMovement : MonoBehaviour
         direction.Normalize();
 
         rb.velocity = direction * moveSpeed;
-
-        if (dirX == -1f)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (dirX == 1f)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
     }
 }
