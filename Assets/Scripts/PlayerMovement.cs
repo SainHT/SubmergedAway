@@ -9,9 +9,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float moveSpeed = 5f;
 
+    private GameObject attackArea;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        attackArea = transform.GetChild(0).gameObject;
     }
 
     void FixedUpdate()
@@ -36,6 +39,23 @@ public class PlayerMovement : MonoBehaviour
         else if (dirX == 1f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        if (direction.y > 0){
+            attackArea.transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+        else if (direction.y < 0)
+        {
+            attackArea.transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+
+        if (direction.x > 0)
+        {
+            attackArea.transform.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        else if (direction.x < 0)
+        {
+            attackArea.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
 }

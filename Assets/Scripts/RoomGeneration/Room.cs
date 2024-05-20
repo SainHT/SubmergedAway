@@ -9,6 +9,7 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject[] rightWallTiles;
     [SerializeField] private GameObject[] topWallTiles;
     [SerializeField] private GameObject[] floorColiders;
+    [SerializeField] private GameObject[] wallOverlays;
     [SerializeField] private GameObject enemySpawner;
 
     [SerializeField] private int maxRooms;
@@ -133,6 +134,9 @@ public class Room : MonoBehaviour
                 }
 
                 int randomIndex = Random.Range(0, tiles.Length);
+                if ((x > 7 && x < 10 && y == 0) || (y > 6 && y < 9 && x == 0)){
+                    randomIndex = 0;
+                }
                 //int randomIndex = 0;
                 GameObject tile = Instantiate(tiles[randomIndex], new Vector3(xPos + .3f * (x - y), yPos - 0.15f * (x + y) + fixWalls, 0), Quaternion.identity);
                 tile.GetComponent<SpriteRenderer>().sortingOrder = priority;
@@ -160,6 +164,8 @@ public class Room : MonoBehaviour
 
                 //add script to certain wall tiles
                 if ((connector == 1 &&  x > 7 && x < 10 && y == 0) || (connector == 2 && y > 6 && y < 9 && x == 0)){
+                    GameObject wallOverlay = Instantiate(wallOverlays[connector - 1], new Vector3(xPos + .3f * (x - y), yPos - 0.15f * (x + y) + fixWalls, 0), Quaternion.identity);
+                    wallOverlay.transform.SetParent(tile.transform);
                     tile.AddComponent<WallColiders>();
                 }
             }
