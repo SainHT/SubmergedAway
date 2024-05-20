@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
 
     private GameObject attackArea;
+    int chnage;
 
     void Start()
     {
@@ -35,27 +36,24 @@ public class PlayerMovement : MonoBehaviour
         if (dirX == -1f)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            chnage = -1;
         }
         else if (dirX == 1f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            chnage = 1;
         }
 
         if (direction.y > 0){
-            attackArea.transform.rotation = Quaternion.Euler(0, 0, -90);
+            attackArea.transform.rotation = Quaternion.Euler(0, 0, 90 * chnage);
         }
         else if (direction.y < 0)
         {
-            attackArea.transform.rotation = Quaternion.Euler(0, 0, 90);
+            attackArea.transform.rotation = Quaternion.Euler(0, 0, -90 * chnage);
         }
 
-        if (direction.x > 0)
-        {
-            attackArea.transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-        else if (direction.x < 0)
-        {
+        if (direction.x != 0)
             attackArea.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+
     }
 }
