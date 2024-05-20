@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 1509935033}
   - component: {fileID: 1509935034}
   m_Layer: 0
-  m_Name: IMG_2664
+  m_Name: PlayerHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1556,7 +1556,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfea2df763f310d4280ac0f8d5fd3f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxHealth: 10
+  health: 10
+  playerHealthBar: {fileID: 1509935034}
+  healthBarStatus:
+  - {fileID: 21300000, guid: 04190fc9278cad8498bba8a5535a20ee, type: 3}
+  - {fileID: 21300000, guid: 9ce50ee1b249bb548840b1fac0458875, type: 3}
+  - {fileID: 21300000, guid: 5a8cd583215554a4f9643920fab95e09, type: 3}
+  - {fileID: 21300000, guid: 33be05803520dc84eaa08923460d9f30, type: 3}
+  - {fileID: 21300000, guid: add1ae509c551fd4da72e54205791fb8, type: 3}
+  - {fileID: 21300000, guid: 2dd3ab68d471eb94c9c381e5bb0c0c8e, type: 3}
+  - {fileID: 21300000, guid: 66dab5d2dacaeed498df060be7f56c93, type: 3}
+  - {fileID: 21300000, guid: 08ec48a40bd4a484496dd45dda99e31f, type: 3}
+  - {fileID: 21300000, guid: 11847f0073ac811469eee38bcab19dd2, type: 3}
+  - {fileID: 21300000, guid: 55c8072b555d4324cb23b99f24379713, type: 3}
+  - {fileID: 21300000, guid: bf2c021cd2c43ee4bb41d0450f288f72, type: 3}
+  animator: {fileID: 1941513078}
 --- !u!95 &1941513078
 Animator:
   serializedVersion: 5
