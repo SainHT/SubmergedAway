@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int health = 10;
-    [SerializeField] private SpriteRenderer playerHealthBar;
+    [SerializeField] private Image playerHealthBar;
     [SerializeField] private Sprite[] healthBarStatus;
     [SerializeField] private Animator animator;
 
