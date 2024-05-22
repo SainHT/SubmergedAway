@@ -37,23 +37,23 @@ public class EnemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
-        StartCoroutine(Die());
+            StartCoroutine(Die());
         }
 
         StartCoroutine(HurtCooldown());
     }
 
-    private IEnumerator HurtCooldown() 
+    private IEnumerator HurtCooldown()
     {
         yield return new WaitForSeconds(hurtCooldown);
         animator.SetFloat("Hurt", 0);
-    } 
-    
+    }
+
     private IEnumerator Die()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetFloat("Death", 1);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         animator.SetFloat("Death", 0);
         playerHealth.Heal(healOnDeath);
         Destroy(gameObject);
