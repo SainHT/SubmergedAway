@@ -116,7 +116,8 @@ GameObject:
   - component: {fileID: 748185096054977257}
   - component: {fileID: 1764166778082079092}
   - component: {fileID: 3045730040382106133}
-  - component: {fileID: 7018403115954100366}
+  - component: {fileID: -5709792862120989639}
+  - component: {fileID: 4360946020855424520}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -134,7 +135,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8291790482197827026}
@@ -266,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee611b496f79ba47bfd9b00afb80c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4360946020855424520}
   health: 100
   maxHealth: 100
   healOnDeath: 1
@@ -282,9 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4145f87ce198a7e4dada106554417fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4360946020855424520}
   moveSpeed: 1
-  attackRange: 0.5
---- !u!114 &7018403115954100366
+  spotRange: 0.5
+--- !u!114 &-5709792862120989639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,9 +299,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47732548c59bb314493f84f17ccb669a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 0.1
+  animator: {fileID: 4360946020855424520}
+  timeToAttack: 2
+  attackingTime: 0.45
   attackDamage: 1
   attackRange: 0.5
+--- !u!95 &4360946020855424520
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367144399421827203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a233cd9db09a7c479780f34f4477d9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2418852015639995388
 PrefabInstance:
   m_ObjectHideFlags: 0

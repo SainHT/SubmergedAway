@@ -7,46 +7,52 @@ public class PlayerAttack : MonoBehaviour
     private GameObject attackArea = default;
 
     [SerializeField] private Animator animator;
-
-    private bool attacking = false;
-
-    private float timeToAttack;
-    private float timer = 0f;
+    [SerializeField] float timeToAttack = 2f;
+    private float attackingTime = 0.3f;
+    private bool canAttack;
 
     void Start()
     {
+        canAttack = true;
         attackArea = transform.GetChild(0).gameObject;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
+        if ((Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space)))
         {
             Attack();
         }
+    }
 
-        if (attacking)
-        {
-            timer += Time.deltaTime;
+    private IEnumerator TimeToAttack() 
+    {
+        yield return new WaitForSeconds(timeToAttack);
+        canAttack = true;
+    }
 
-            if (timer >= timeToAttack)
-            {
-                timer = 0;
-                attacking = false;
-                animator.SetFloat("Attacking", 0);
-                attackArea.SetActive(attacking);
-            }
-        }
+    private IEnumerator AttackingTime() 
+    {
+        yield return new WaitForSeconds(attackingTime);
+        attackArea.SetActive(false);
+        animator.SetFloat("Attacking", 0);
     }
 
     private void Attack()
     {
-        animator.SetFloat("Attacking", 1);
+        if (canAttack == true) 
+        {
+            animator.SetFloat("Attacking", 1);
 
-        Inventory inventory = transform.gameObject.GetComponent<Inventory>();
-        timeToAttack = inventory.guns[inventory.currentGunIndex].timeToAttack;
+            canAttack = false;
 
-        attacking = true;
-        attackArea.SetActive(attacking);
+            Inventory inventory = transform.gameObject.GetComponent<Inventory>();
+            timeToAttack = inventory.guns[inventory.currentGunIndex].timeToAttack;
+
+            attackArea.SetActive(true);
+
+            StartCoroutine(TimeToAttack());
+            StartCoroutine(AttackingTime());
+        }
     }
 }

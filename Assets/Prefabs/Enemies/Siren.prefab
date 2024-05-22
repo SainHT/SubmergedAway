@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1764166778082079092}
   - component: {fileID: 3375455715263292201}
   - component: {fileID: -8093833786698989952}
+  - component: {fileID: 4315113469518810818}
   m_Layer: 0
   m_Name: Siren
   m_TagString: Untagged
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee611b496f79ba47bfd9b00afb80c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4315113469518810818}
   health: 100
   maxHealth: 100
   healOnDeath: 3
@@ -180,8 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4145f87ce198a7e4dada106554417fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  attackRange: 2
+  animator: {fileID: 4315113469518810818}
+  moveSpeed: 1
+  spotRange: 1.5
 --- !u!114 &-8093833786698989952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,9 +197,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47732548c59bb314493f84f17ccb669a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 0.05
+  animator: {fileID: 4315113469518810818}
+  timeToAttack: 2.5
+  attackingTime: 0.45
   attackDamage: 1
   attackRange: 0.5
+--- !u!95 &4315113469518810818
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367144399421827203}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8de702464e45c54ab2ea0b7bfe619bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6705557324275966097
 GameObject:
   m_ObjectHideFlags: 0

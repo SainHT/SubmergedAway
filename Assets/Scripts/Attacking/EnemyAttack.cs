@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float attackSpeed = 5f; // Speed at which the enemy attacks
-    public int attackDamage = 1; // Damage dealt by the enemy's attack
-    public float attackRange = 2f; // Distance at which the enemy can attack
+    [SerializeField] private Animator animator;
 
-    private GameObject player; // Reference to the player object
+    [SerializeField] private float timeToAttack = 5f;
+    [SerializeField] private float attackingTime = 0.45f;
+    public int attackDamage = 1;
+    public float attackRange = 2f;
+    private GameObject player;
     private bool attacked = false;
-    private float timeToAttack = 5f;
     private float timer = 0f;
 
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player"); // Find the player object by tag
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -29,24 +30,29 @@ public class EnemyAttack : MonoBehaviour
         {
             AttackPlayer();
         }
+    }
 
-        if (attacked)
-        {
-            timer += Time.deltaTime;
-            if (timer >= timeToAttack)
-            {
-                timer = 0;
-                attacked = false;
-            }
-        }
+    private IEnumerator TimeToAttack() 
+    {
+        yield return new WaitForSeconds(timeToAttack);
+        attacked = false;
+    }
 
+    private IEnumerator AttackingTime() 
+    {
+        yield return new WaitForSeconds(attackingTime);
+        animator.SetFloat("Attacking", 0);
     }
 
     void AttackPlayer()
     {
-        // Reduce the player's health by the attack damage
+        animator.SetFloat("Attacking", 1);
+
         player.GetComponent<PlayerHealth>().Damage(attackDamage);
 
         attacked = true;
+
+        StartCoroutine(TimeToAttack());
+        StartCoroutine(AttackingTime());
     }
 }

@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
     [SerializeField] private int health;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int healOnDeath = 1;
     [SerializeField] private Slider healthBar;
     private FloatingStatusBar floatingHealthBar;
     private PlayerHealth playerHealth;
+    private float hurtCooldown = 0.09f;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Damage(int amount)
     {
+        animator.SetFloat("Hurt", 1);
         health -= amount;
         floatingHealthBar.UpdateHealthBar(health, maxHealth);
 
@@ -34,7 +37,15 @@ public class EnemyHealth : MonoBehaviour
         {
             Die();
         }
+
+        StartCoroutine(HurtCooldown());
     }
+
+    private IEnumerator HurtCooldown() 
+    {
+        yield return new WaitForSeconds(hurtCooldown);
+        animator.SetFloat("Hurt", 0);
+    } 
 
     void Die()
     {
