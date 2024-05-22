@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee611b496f79ba47bfd9b00afb80c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyAttack: {fileID: -5709792862120989639}
   animator: {fileID: 4360946020855424520}
   rb: {fileID: 3583378227797352876}
   health: 100
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4360946020855424520}
-  timeToAttack: 2
+  timeToAttack: 2.5
   attackingTime: 0.45
   attackDamage: 1
   attackRange: 0.5

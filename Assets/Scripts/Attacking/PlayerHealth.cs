@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(6f);
             Damage(1);
         }
     }

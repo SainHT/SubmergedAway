@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [SerializeField] private EnemyAttack enemyAttack;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private int health;
@@ -37,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            Destroy(enemyAttack);
             StartCoroutine(Die());
         }
 
@@ -53,9 +55,9 @@ public class EnemyHealth : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetFloat("Death", 1);
-        yield return new WaitForSeconds(1.5f);
-        animator.SetFloat("Death", 0);
         playerHealth.Heal(healOnDeath);
+        yield return new WaitForSeconds(1f);
+        animator.SetFloat("Death", 0);
         Destroy(gameObject);
     }
 }
