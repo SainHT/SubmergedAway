@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
+  rb: {fileID: 0}
   health: 0
   maxHealth: 100
   healOnDeath: 1
@@ -286,6 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5400901843605206172}
+  rb: {fileID: 3583378227797352876}
   health: 100
   maxHealth: 100
   healOnDeath: 2
