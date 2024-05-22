@@ -5,23 +5,49 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+
+    [SerializeField] private Image oxygenBar;
+    [SerializeField] private Sprite[] oxygenBarStatus;
+    [SerializeField] private int maxOxygen = 10;
+    [SerializeField] private int oxygen = 10;
+
+    [SerializeField] private Image healthBar;
+    [SerializeField] private Sprite[] healthBarStatus;
     [SerializeField] private int maxHealth = 10;
     [SerializeField] private int health = 10;
-    [SerializeField] private Image playerHealthBar;
-    [SerializeField] private Sprite[] healthBarStatus;
-    [SerializeField] private Animator animator;
 
     private void Start()
     {
+        oxygen = maxOxygen;
+        oxygenBar.sprite = oxygenBarStatus[health];
+
         health = maxHealth;
-        playerHealthBar.sprite = healthBarStatus[health];
+        healthBar.sprite = healthBarStatus[health];
 
         StartCoroutine(OxygenLoss());
     }
 
-    IEnumerator OxygenLoss()
+    private IEnumerator OxygenLoss()
     {
         while (true)
+        {
+            yield return new WaitForSeconds(6f);
+            if (oxygen > 0)
+            {
+                oxygen -= 1;
+                oxygenBar.sprite = oxygenBarStatus[oxygen];
+                if (oxygen == 0)
+                {
+                    StartCoroutine(HealthLoss());
+                }
+            }
+        }
+    }
+
+    private IEnumerator HealthLoss()
+    {
+        while (oxygen == 0)
         {
             yield return new WaitForSeconds(6f);
             Damage(1);
@@ -36,12 +62,24 @@ public class PlayerHealth : MonoBehaviour
 
         if (health >= 0)
         {
-            playerHealthBar.sprite = healthBarStatus[health];
+            healthBar.sprite = healthBarStatus[health];
         }
 
         if (health <= 0)
         {
             Die();
+        }
+    }
+
+    public void AddOxygen(int amount)
+    {
+        if (oxygen + amount <= maxOxygen)
+        {
+            oxygen += amount;
+        }
+        else
+        {
+            oxygen = maxOxygen;
         }
     }
 

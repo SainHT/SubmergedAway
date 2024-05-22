@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private int health;
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int healOnDeath = 1;
+    [SerializeField] private int oxygenOnDeath = 1;
     [SerializeField] private Slider healthBar;
     private FloatingStatusBar floatingHealthBar;
     private PlayerHealth playerHealth;
@@ -55,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animator.SetFloat("Death", 1);
-        playerHealth.Heal(healOnDeath);
+        playerHealth.AddOxygen(oxygenOnDeath);
         yield return new WaitForSeconds(1f);
         animator.SetFloat("Death", 0);
         Destroy(gameObject);

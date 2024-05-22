@@ -32,13 +32,13 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator TimeToAttack() 
+    private IEnumerator TimeToAttack()
     {
         yield return new WaitForSeconds(timeToAttack);
         attacked = false;
     }
 
-    private IEnumerator AttackingTime() 
+    private IEnumerator AttackingTime()
     {
         yield return new WaitForSeconds(attackingTime);
         animator.SetFloat("Attacking", 0);

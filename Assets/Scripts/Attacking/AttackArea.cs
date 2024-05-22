@@ -8,12 +8,12 @@ public class AttackArea : MonoBehaviour
     {
         if (collider.GetComponent<EnemyHealth>() != null)
         {
-            EnemyHealth health = collider.GetComponent<EnemyHealth>();
+            EnemyHealth enemyHealth = collider.GetComponent<EnemyHealth>();
             Inventory inventory = transform.parent.gameObject.GetComponent<Inventory>();
 
             int damage = inventory.guns[inventory.currentGunIndex].damage;
 
-            health.Damage(damage);
+            enemyHealth.Damage(damage);
         }
     }
 }
